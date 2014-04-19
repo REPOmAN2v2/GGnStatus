@@ -3,7 +3,7 @@ block body-content
     script.
         var trackerUptimeData = new Array();
 
-        $.getJSON("/api/uptime/tracker", function(uptimes) {
+        $.getJSON("api/uptime/tracker", function(uptimes) {
             for (var uptime in uptimes) {
                 trackerUptimeData.push([uptime.substring(8,10) + ":" + uptime.substring(10), parseInt(uptimes[uptime])]);
             }
@@ -35,20 +35,20 @@ block body-content
         } 
 
     script.
-        $.getJSON("/api/uptime", function(components) {
+        $.getJSON("api/uptime", function(components) {
             for (var component in components) {
                 $("#stats-uptime-" + component).html(components[component] + "h" + " (" + Math.floor(components[component]/24) +" days)"); 
             }
         });
 
-        $.getJSON("/api/records", function(components) {
+        $.getJSON("api/records", function(components) {
             for (var component in components) {
                 $("#stats-uptimerecord-" + component).html(components[component] + "h" + " (" + Math.floor(components[component]/24) +" days)"); 
             }
         });
     div#content
         h2
-            a(href="/") GGnStatus.info
+            a(href="/GGnStatus/") GGnStatus.info
         h3 Uptime
         ul.stats-list
             li Site - gazellegames.net

@@ -173,7 +173,7 @@ new cronJob('*/5 * * * *', function() {
     });
 
     // Get Tracker Status
-    var client = net.connect(34000, 'tracker.gazellegames.net', function() {
+    var client = net.connect(43000, 'tracker.gazellegames.net', function() {
         db.set('tracker-status', "1")
         tracker_status_counter = 0;
     });
