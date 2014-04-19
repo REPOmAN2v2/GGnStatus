@@ -28,7 +28,7 @@ app.configure(function() {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
-    app.use(express.favicon('images/favicon.ico'));
+    app.use(express.favicon('public/images/favicon.ico'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(app.router);
@@ -51,7 +51,7 @@ function reset_uptime(component) {
 app.get('/', function(req, res) {
     res.render('index', {
         title: 'GGnStatus',
-        logo_url: 'images/logos/logo.png'
+        logo_url: 'public/images/logos/logo.png'
     });
 })
 

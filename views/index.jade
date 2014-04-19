@@ -2,19 +2,19 @@ extends layout
 
 block body-content
     script.
-        $.getJSON("/api/status", function(components) {
+        $.getJSON("api/status", function(components) {
             for (var component in components) {
                 if(components[component] == 1) {
                     $("#status-" + component).html("Up");
                     $("#status-" + component).css("color", "#089a00");
-                    $("#status-" + component + "-icon").attr('src', "images/up.png");
+                    $("#status-" + component + "-icon").attr('src', "public/images/up.png");
                 } else if (components[component] == 0) {
                     $("#status-" + component).html("Down");
                     $("#status-" + component).css("color", "#ff1600");
-                    $("#status-" + component + "-icon").attr('src', "images/down.png");
+                    $("#status-" + component + "-icon").attr('src', "public/images/down.png");
                 } else {
                     $("#status-" + component).html("Updating...");
-                    $("#status-" + component + "-icon").attr('src', "images/updating.png");
+                    $("#status-" + component + "-icon").attr('src', "public/images/updating.png");
                 }
             }
         });
