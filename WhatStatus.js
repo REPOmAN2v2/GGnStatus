@@ -1,7 +1,8 @@
 /**
  * WhatStatus.info is a simple status page for torrent site.
- * @author dewey
+ * @authors dewey REPOmAN2v2
  * https://github.com/dewey/WhatStatus
+ * https://github.com/REPOmAN2v2/GGnStatus
  */
 
 var express = require('express'),
@@ -49,7 +50,7 @@ function reset_uptime(component) {
 // Render the index page
 app.get('/', function(req, res) {
     res.render('index', {
-        title: 'WhatStatus',
+        title: 'GGnStatus',
         logo_url: 'images/logos/logo.png'
     });
 })
@@ -57,21 +58,21 @@ app.get('/', function(req, res) {
 // Render the Stats page
 app.get('/stats', function(req, res) {
     res.render('stats', {
-        title: 'WhatStatus'
+        title: 'GGnStatus'
     });
 })
 
 // Render the About page
 app.get('/about', function(req, res) {
     res.render('about', {
-        title: 'WhatStatus'
+        title: 'GGnStatus'
     });
 })
 
 // Render the FAQ page
 app.get('/faq', function(req, res) {
     res.render('faq', {
-        title: 'WhatStatus'
+        title: 'GGnStatus'
     });
 })
 
@@ -156,7 +157,7 @@ var irc_status_counter = 0
 new cronJob('*/1 * * * *', function() {
 
     // Get Site Status
-    request('https://what.cd', function(error, response) {
+    request('https://gazellegames.net', function(error, response) {
         if (!error && response.statusCode == 200) {
             db.set('site-status', '1')
             site_status_counter = 0;
@@ -172,7 +173,7 @@ new cronJob('*/1 * * * *', function() {
     });
 
     // Get Tracker Status
-    var client = net.connect(34000, 'tracker.what.cd', function() {
+    var client = net.connect(34000, 'tracker.gazellegames.net', function() {
         db.set('tracker-status', "1")
         tracker_status_counter = 0;
     });
@@ -201,7 +202,7 @@ new cronJob('*/1 * * * *', function() {
     });
 
     // Get IRC Status
-    var client = net.connect(6667, 'irc.what-network.net', function() {
+    var client = net.connect(6667, 'irc.gazellegames.net', function() {
         db.set('irc-status', '1')
         irc_status_counter = 0;
     });
@@ -326,5 +327,5 @@ new cronJob('0 * * * *', function() {
 }, null, true, "Europe/Vienna");
 
 http.createServer(app).listen(app.get('port'), function() {
-    console.log("WhatStatus server listening on port: " + app.get('port'));
+    console.log("GGnStatus server listening on port: " + app.get('port'));
 });

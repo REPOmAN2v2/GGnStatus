@@ -1,4 +1,4 @@
-# WhatStatus
+# GGnStatus
 ## Check health of IRC, Tracker and Site
 ===
 
