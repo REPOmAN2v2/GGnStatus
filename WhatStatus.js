@@ -154,7 +154,7 @@ var tracker_status_counter = 0
 var irc_status_counter = 0
 
 // Check Site Components (Cronjob running every minute)
-new cronJob('*/1 * * * *', function() {
+new cronJob('*/5 * * * *', function() {
 
     // Get Site Status
     request('https://gazellegames.net', function(error, response) {
