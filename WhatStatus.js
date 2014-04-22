@@ -154,7 +154,7 @@ var tracker_status_counter = 0
 var irc_status_counter = 0
 
 // Check Site Components (Cronjob running every minute)
-new cronJob('*/5 * * * *', function() {
+new cronJob('*/1 * * * *', function() {
 
     // Get Site Status
     request('https://gazellegames.net', function(error, response) {
@@ -201,6 +201,10 @@ new cronJob('*/5 * * * *', function() {
         client.end();
     });
 
+}, null, true, "Europe/Vienna");
+
+new cronJob('*/5 * * * *', function() {
+
     // Get IRC Status
     var client = net.connect(6667, 'irc.gazellegames.net', function() {
         db.set('irc-status', '1')
@@ -216,7 +220,7 @@ new cronJob('*/5 * * * *', function() {
     client.on('error', function() {
         irc_status_counter++;
         console.log("[Check-IRC] Status counter: " + irc_status_counter);
-        if (irc_status_counter > 2) {
+        if (irc_status_counter > 1) {
             db.set('irc-status', '0')
             reset_uptime('irc');
             console.log("[Check-IRC] IRC down");
@@ -229,6 +233,7 @@ new cronJob('*/5 * * * *', function() {
         console.log("[Check-IRC] Timeout");
         client.end();
     });
+
 }, null, true, "Europe/Vienna");
 
 /*
