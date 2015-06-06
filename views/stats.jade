@@ -32,18 +32,18 @@ block body-content
 
                 var chart = new google.visualization.LineChart(document.getElementById('chart-tracker-uptime'));
                 chart.draw(data, options);
-        } 
+        }
 
     script.
         $.getJSON("api/uptime", function(components) {
             for (var component in components) {
-                $("#stats-uptime-" + component).html(components[component] + "h" + " (" + Math.floor(components[component]/24) +" days)"); 
+                $("#stats-uptime-" + component).html(components[component] + "h" + " (" + Math.floor(components[component]/24) +" days)");
             }
         });
 
         $.getJSON("api/records", function(components) {
             for (var component in components) {
-                $("#stats-uptimerecord-" + component).html(components[component] + "h" + " (" + Math.floor(components[component]/24) +" days)"); 
+                $("#stats-uptimerecord-" + component).html(components[component] + "h" + " (" + Math.floor(components[component]/24) +" days)");
             }
         });
     div#content
